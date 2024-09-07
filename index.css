@@ -1,0 +1,18 @@
+#add,#add_sale{
+    background-color: rgb(55, 253, 124);
+    border-radius: 5px;
+    border: 0px solid black;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#wishlist{
+    border-radius: 5px;
+    border: 1px solid black;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <button id="add" onclick="add()">Add to Bag</button>
+    <button id="wishlist" onclick="
+    bag-=1; 
+     document.querySelector('#cart-summary').innerHTML='Your bag has ' + bag + ' item' + (bag> 1 ? 's' : '');">MOVE TO
+        WISHLIST</button>
+    <button id="add_sale" onclick="
+    bag+=2; 
+     document.querySelector('#cart-summary').innerHTML='Your bag has ' + bag + ' item' + (bag> 1 ? 's' : '');">Add 1+1 sale item</button>
+
+    <h1 id="cart-summary">
+
+    </h1> 
+
+    <script>
+        let bag = 0; // Initialize the bag count
+        document.querySelector("#cart-summary").innerHTML = 'Your bag has ' + bag + ' item';
+
+        function add() {
+            bag += 1; // Increment the bag count
+
+            // Update the cart summary
+            document.querySelector("#cart-summary").innerHTML = 'Your bag has ' + bag + ' item' + (bag > 1 ? 's' : '');
+
+        }
+    </script>
+</body>
+
+</html>
