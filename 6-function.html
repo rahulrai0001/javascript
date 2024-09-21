@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function convertTemperature(degree,unit){
+            let fahereniet ='';
+            let celsius = '';
+            if(unit==='c'){
+                fahereniet= (degree*9/5)+32;
+                console.log(fahereniet);
+            }else if(unit==='f'){
+                celsius=(degree-32)*5/9;
+                console.log(celsius);
+            }
+        }
+        convertTemperature(25,'c');
+        convertTemperature(86,'f');
+    </script>
+</body>
+</html>
