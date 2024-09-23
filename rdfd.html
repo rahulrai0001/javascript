@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html>
+<html></html>
   <head></head>
   <body>
-    <!-- Code changes are at the bottom. -->
     <p>
       <button onclick="
         updateCalculation('1');
@@ -73,9 +71,10 @@
         // Only use eval() for learning purposes.
         calculation = eval(calculation);
         console.log(calculation);
-
-        // Remember to save the calculation here.
-        localStorage.setItem('calculation', calculation);
+        localStorage.setItem('calc',calculation);
+        
+       
+       
       ">=</button>
 
       <button onclick="
@@ -87,26 +86,16 @@
       <button onclick="
         calculation = '';
         console.log(calculation);
-
-        // Remember to save the calculation here.
-        // localStorage.setItem('calculation', calculation);
       ">Clear</button>
     </p>
 
     <script>
-      let calculation = localStorage.getItem('calculation') || '';
+      let calculation =  localStorage.getItem('calc')|| '';
 
       function updateCalculation(value) {
         calculation += value;
         console.log(calculation);
-        // localStorage.setItem('calculation', calculation);
       }
-
-      // Optional: you can also create a function in order
-      // to reuse this code.
-      // function saveCalculation() {
-      //   localStorage.setItem('calculation', calculation);
-      // }
     </script>
   </body>
 </html>
