@@ -10,8 +10,34 @@
     <button onclick="youtube()">    
                                                                      Subscribe
     </button>
+
+    <p>calculator</p>
+    <input type="number" placeholder="cost of order" onkeydown="handlekeydown(event);">
+    <button onclick="calculate();">calculate</button>
+    <p class="res"></p>
     <script>
         "use strict";
+
+        function handlekeydown(event){
+            if (event.key === 'Enter'){
+                calculate();
+            }
+
+        }
+
+        function calculate(){
+        
+        let  text =Number(document.querySelector('input').value);
+        
+            if(text <=40 && text>0){
+                text +=10;
+                document.querySelector('.res').innerHTML=text;
+            }else{
+                text = text;
+                document.querySelector('.res').innerHTML=text;
+            }
+
+        }
 
         function youtube() {
             let button = document.querySelector('button');
