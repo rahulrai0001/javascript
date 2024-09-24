@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="check();" class="head">Heads</button>
+    <button onclick="check2();" class="tail">Tails</button>
+    <p class="res"></p>
+
+
+
+    <!-- <input placeholder="Type something" class="js-input"
+    onkeyup="
+      const inputElement = document.querySelector('.js-input');
+      document.querySelector('.js-message')
+        .innerHTML = inputElement.value;
+    "> -->
+
+    <input type="text" onkeyup="userText();">
+
+  <p class="js-message"></p>
+
+    <script>
+
+        function userText(){
+            inputElement = document.querySelector('input').value;
+            document.querySelector('.js-message').innerHTML= inputElement;
+        }
+
+        function check(){
+            text=document.querySelector('.head').innerHTML;
+            document.querySelector('.res').innerHTML='you choose '+ text;
+        }
+        function check2(){
+            text=document.querySelector('.tail').innerHTML;
+            document.querySelector('.res').innerHTML='you choose '+ text;
+        }
+
+    </script>
+</body>
+</html>

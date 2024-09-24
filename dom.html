@@ -31,6 +31,7 @@
         
             if(text <=40 && text>0){
                 text +=10;
+                text= Math.round(text);
                 document.querySelector('.res').innerHTML=text;
             }else{
                 text = text;
