@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Game</h1>
+    <button onclick=" 
+ playgame('rock');
+
+    ">rock</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button onclick=" 
+      playgame('paper');
+    ">
+        paper
+    </button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <button onclick=" 
+   
+            playgame('scissor');
+    // console.log(computerMove);
+
+   
+    ">scissor</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <p class="result"></p>
+    <p class="moves"></p>
+    <p class="scores"></p>
+
+    <button onclick="
+    score.wins=0;
+    score.losses=0;
+    score.ties=0;
+    localStorage.removeItem('score');
+    updateScore();
+    "
+    
+    >
+        Reset score
+    </button>
+
+    <script>
+        // "use strict";
+
+         
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
+
+        // if(score===null / !score){
+        //     score ={
+        //         wins :0,
+        //        losses :0,
+        //         ties :0
+
+        //     }
+        // }
+
+        // document.querySelector('.scores').innerHTML= ` wins: ${score.wins}, losses: ${score.losses}, tie: ${score.ties}`;
+        function playgame(usermove) {
+            const computerMove2 = pickComuterMove();
+            // console.log(computerMove);
+
+            let result2 = '';
+    
+            if (usermove == 'scissor') {
+
+
+                if (computerMove2 === 'rock') {
+                    result2 = 'you lose';
+                } else if (computerMove2 === 'paper') {
+                    result2 = 'you win';
+                } else if (computerMove2 === 'scissor') {
+                    result2 = 'tie';
+                }
+            } else if (usermove == 'paper') {
+                if (computerMove2 === 'rock') {
+                    result2 = 'you win';
+                } else if (computerMove2 === 'paper') {
+                    result2 = 'tie';
+                } else if (computerMove2 === 'scissor') {
+                    result2 = 'you lose';
+                }
+            } else if (usermove == 'rock') {
+                if (computerMove2 === 'rock') {
+                    result2 = 'tie';
+                } else if (computerMove2 === 'paper') {
+                    result2 = 'you lose';
+                } else if (computerMove2 === 'scissor') {
+                    result2 = 'you win';
+                }
+            }
+
+            if (result2==='you win'){
+                score.wins += 1;
+            }else if(result2 === 'you lose'){
+                score.losses += 1;
+            }else if(result2 === 'tie'){
+                score.ties +=1;
+            }
+            updateScore();
+            localStorage.setItem('score',JSON.stringify(score));
+
+            document.querySelector('.result').innerHTML= `${result2}`;
+
+            document.querySelector('.moves').innerHTML=`you choose ${usermove} and computer choose ${computerMove2}.`
+
+            // alert(`you choose ${usermove} and computer choose ${computerMove2}. ${result2} 
+            // wins: ${score.wins}, losses: ${score.losses}, tie: ${score.ties}`);
+        }
+
+        function updateScore(){
+            document.querySelector('.scores').innerHTML= ` wins: ${score.wins}, losses: ${score.losses}, tie: ${score.ties}`;
+        }
+        updateScore();
+       
+
+        function pickComuterMove() {
+            const randomNumber2 = Math.random();
+            // console.log(randomNumber);
+            let computerMove2 = '';
+
+            if (randomNumber2 >= 0 && randomNumber2 < 1 / 3) {
+                computerMove2 = 'rock';
+                // console.log('rock');
+            } else if (randomNumber2 >= 1 / 3 && randomNumber2 < 2 / 3) {
+                computerMove2 = 'paper';
+                // console.log('paper');
+            } else if (randomNumber2 >= 2 / 3 && randomNumber2 <= 1) {
+                computerMove2 = 'scissor';
+                // console.log('scissor');
+            }
+            return computerMove2;
+        }
+    </script>
+</body>
+
+</html>
