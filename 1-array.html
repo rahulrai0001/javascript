@@ -9,9 +9,28 @@
     <div>TO DO LIST</div>
     <input type="text" placeholder="to do list" onkeydown="handlekeydown(event);">
     <button onclick="todoWork();">ADD</button>
+
+    <div class="to-do-show"></div>
     <script>
        
-       myArray = [];
+       myArray = [1 ,2];
+        
+       
+
+         rendertodo();
+         function rendertodo(){
+            display = '';
+           
+       for (let i = 0; i < myArray.length; i++) {
+        const element = `<p> ${myArray[i]}</p>`
+        // const html = `<p> ${element}</p>`;
+        display += element;
+        
+        
+       }
+       console.log(display);
+       document.querySelector('.to-do-show').innerHTML = display;
+    }
 
        function handlekeydown(event){
             if (event.key === 'Enter'){
@@ -32,12 +51,23 @@
                 alert("fill the text");
             }else{
                 myArray.push(inputElement);
-                console.log(myArray);
+                // console.log(myArray);
             }
 
             document.querySelector('input').value = '';
-        }
 
+            rendertodo();
+        
+        
+        }
+       
+
+
+        
+        
+
+
+       
         // const todo=['make dinner','dfdsfdf','dsfsfd','dfsfdg'];
         // console.log(todo.length);
 
