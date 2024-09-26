@@ -13,7 +13,7 @@
     <div class="to-do-show"></div>
     <script>
        
-       myArray = [1 ,2];
+       myArray = ['add some work'];
         
        
 
@@ -49,8 +49,13 @@
             if(inputElement === ''){
 
                 alert("fill the text");
-            }else{
-                myArray.push(inputElement);
+            } else {
+                // Remove 'add some work' text if it is still present in the array
+                if (myArray.includes('add some work')) {
+                    myArray = []; // Clear the default text before adding new tasks
+                }
+
+                myArray.push(inputElement); // Add the new task
                 // console.log(myArray);
             }
 
