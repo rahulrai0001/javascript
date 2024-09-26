@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>TO DO LIST</div>
+    <input type="text" placeholder="to do list" onkeydown="handlekeydown(event);">
+    <button onclick="todoWork();">ADD</button>
+    <script>
+       
+       myArray = [];
+
+       function handlekeydown(event){
+            if (event.key === 'Enter'){
+                todoWork();
+            }
+
+        }
+        function todoWork(){
+           
+            let inputElement= document.querySelector('input').value;
+            // myArray.push(inputElement);
+            // console.log(myArray);
+
+           
+
+            if(inputElement === ''){
+
+                alert("fill the text");
+            }else{
+                myArray.push(inputElement);
+                console.log(myArray);
+            }
+
+            document.querySelector('input').value = '';
+        }
+    </script>
+</body>
+</html>
