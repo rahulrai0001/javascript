@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function minMax(array){
+
+        let number = {
+            min : array[0] ,
+            max : array[0]
+        }
+        
+            for (let i = 0; i < array.length; i++) {
+                const element = array[i];
+
+                if(element < number.min){
+                    number.min = element ;
+
+                }else if (element > number.max){
+                    number.max = element;
+                }
+
+                
+            }
+            return number;
+        }
+        console.log(minMax([-1,2,5]));
+
+    </script>
+</body>
+</html>
