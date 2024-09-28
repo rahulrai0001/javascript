@@ -72,9 +72,12 @@
 
         console.log(removeEggs(['egg', 'apple', 'egg', 'ham', 'egg', 'banana']));
         // Output: ['apple', 'ham', 'egg', 'banana'] man you  should not add non egg elements or after skipping firs two eggs 
-        // removed skip the first two eg
+        // removed skip the first two first did for did for to make a function for index array for loop and for each loop array 
+        // 
+         
 
 
+    
         function removeEggs(foods) {
             let food = foods.reverse();
             let eggless = [];
@@ -98,7 +101,39 @@
         // Output: ['apple', 'ham', 'egg', 'banana'] 
 
 
+        for (let i = 1; i <= 20; i++) {
+    let result = ''; // Create a variable to store the result for each iteration
+
+    // Check if i is divisible by both 3 and 5 first
+    if (i % 3 === 0 && i % 5 === 0) {
+        result = 'fire buzz';
+    } else if (i % 3 === 0) {
+        result = 'fire';
+    } else if (i % 5 === 0) {
+        result = 'buzz';
+    } else {
+        result = i; // If none of the conditions are true, use the number itself
+    }
+
+    console.log(result); // Output the result for each iteration
+}
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
+
+    
 </body>
 
 </html>

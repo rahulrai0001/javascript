@@ -1,6 +1,7 @@
 
-        myArray = [ {name:'add some work', duedate:'2024-09-04'}];
+        myArray = JSON.parse(localStorage.getItem('todoList')) || [ {name:'add some work', duedate:'2024-09-04'}];
 
+        
         rendertodo();
         function rendertodo(){
             display = '';
@@ -15,6 +16,7 @@
                     <button class="delete-btn" onclick="
                         myArray.splice(${i}, 1); 
                         rendertodo();
+                         saveToStorage();
                     ">DELETE</button>
                 </div>`;
                 
@@ -45,8 +47,12 @@
                 myArray.push({name: inputElement, duedate: inputDateElement});
             }
 
+            saveToStorage();
             document.querySelector('input').value = '';
             document.querySelector('#date').value = '';
             rendertodo();
         }
     
+        function saveToStorage() {
+            localStorage.setItem('todoList', JSON.stringify(myArray));
+          }
