@@ -39,10 +39,10 @@
             eggless = [];
             for (i = 0; i < foods.length; i++) {
                 // element=foods[i];
-                if(foods[i]==='egg'){
-                
+                if (foods[i] === 'egg') {
+
                     continue;
-                }else{
+                } else {
                     eggless.push(foods[i]);
                 }
             }
@@ -53,25 +53,50 @@
 
 
         function removeEggs(foods) {
-    let eggless = [];
-    let eggCount = 0; // Counter to track the number of eggs removed
+            let eggless = [];
+            let eggCount = 0; // Counter to track the number of eggs removed
 
-    for (let i = 0; i < foods.length; i++) {
-        let element = foods[i];
-        
-        if (element === 'egg' && eggCount < 2) {
-            eggCount++; // Increment the egg counter for each egg removed
-            continue; // Skip the first two eggs
+            for (let i = 0; i < foods.length; i++) {
+                let element = foods[i];
+
+                if (element === 'egg' && eggCount < 2) {
+                    eggCount++; // Increment the egg counter for each egg removed
+                    continue; // Skip the first two eggs
+                }
+
+                eggless.push(element); // Add non-egg elements or after skipping first two eggs
+            }
+
+            return eggless;
         }
-        
-        eggless.push(element); // Add non-egg elements or after skipping first two eggs
-    }
 
-    return eggless;
-}
+        console.log(removeEggs(['egg', 'apple', 'egg', 'ham', 'egg', 'banana']));
+        // Output: ['apple', 'ham', 'egg', 'banana'] man you  should not add non egg elements or after skipping firs two eggs 
+        // removed skip the first two eg
 
-console.log(removeEggs(['egg', 'apple', 'egg', 'ham', 'egg', 'banana']));
-// Output: ['apple', 'ham', 'egg', 'banana']
+
+        function removeEggs(foods) {
+            let food = foods.reverse();
+            let eggless = [];
+            let eggCount = 0; // Counter to track the number of eggs removed
+
+            for (let i = 0; i < food.length; i++) {
+                let element = food[i];
+
+                if (element === 'egg' && eggCount < 2) {
+                    eggCount++; // Increment the egg counter for each egg removed
+                    continue; // Skip the first two eggs
+                }
+
+                eggless.push(element); // Add non-egg elements or after skipping first two eggs
+            }
+
+            return eggless.reverse();
+        }
+
+        console.log(removeEggs(['egg', 'apple', 'egg', 'ham', 'egg', 'banana']));
+        // Output: ['apple', 'ham', 'egg', 'banana'] 
+
 
     </script>
 </body>
