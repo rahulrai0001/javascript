@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //         myArray=['hello','search','good','search','fast','search'];
+
+        // for (let i = 0; i < myArray.length; i++) {
+        // if (myArray[i] === 'search') {
+        //   index = i
+        //   break;
+        // }
+        // }
+
+        // console.log(index);
+
+        function findIndex(array, word) {
+            let index = -1;
+            for (i = 0; i < array.length; i++) {
+                if (word === array[i]) {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+
+        }
+        console.log(findIndex(['green', 'red', 'blue', 'red'], 'red'));
+        console.log(findIndex(['green', 'red', 'blue', 'red'], 'yellow'));
+
+
+        function removeEggs(foods) {
+            eggless = [];
+            for (i = 0; i < foods.length; i++) {
+                // element=foods[i];
+                if(foods[i]==='egg'){
+                
+                    continue;
+                }else{
+                    eggless.push(foods[i]);
+                }
+            }
+            return eggless;
+
+        }
+        console.log(removeEggs(['egg', 'apple', 'egg', 'ham', 'egg']));
+
+
+        function removeEggs(foods) {
+    let eggless = [];
+    let eggCount = 0; // Counter to track the number of eggs removed
+
+    for (let i = 0; i < foods.length; i++) {
+        let element = foods[i];
+        
+        if (element === 'egg' && eggCount < 2) {
+            eggCount++; // Increment the egg counter for each egg removed
+            continue; // Skip the first two eggs
+        }
+        
+        eggless.push(element); // Add non-egg elements or after skipping first two eggs
+    }
+
+    return eggless;
+}
+
+console.log(removeEggs(['egg', 'apple', 'egg', 'ham', 'egg', 'banana']));
+// Output: ['apple', 'ham', 'egg', 'banana']
+
+    </script>
+</body>
+
+</html>
