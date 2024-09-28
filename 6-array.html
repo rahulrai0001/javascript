@@ -4,109 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div>TO DO LIST</div>
-    <input type="text" placeholder="to do list" onkeydown="handlekeydown(event);">
-    <input type="date" name="" id="date">
-    <button onclick="todoWork();">ADD</button>
+    <div class="container">
+        <h1>TO DO LIST</h1>
+        <div class="input-container">
+            <input type="text" placeholder="Enter task" onkeydown="handlekeydown(event);">
+            <input type="date" id="date">
+            <button onclick="todoWork();">ADD</button>
+        </div>
 
-    <div class="to-do-show"></div>
-    <script>
-       
-       myArray = [ {name:'add some work',duedate:'2024-09-04'}];
-        
-       
+        <div class="to-do-show"></div>
+    </div>
 
-         rendertodo();
-         function rendertodo(){
-            display = '';
-           
-       for (let i = 0; i < myArray.length; i++) {
-        const todoobject=myArray[i];
-        // const name = todoobject.name;
-        // const duedate = todoobject.duedate;
-//destructuring in object when property name and var name is same 
-        const{name , duedate} = todoobject;
-        
-        const element = `<p> 
-            ${name}          
-             ${duedate}
-             <button onclick="
-             myArray.splice(${i}, 1) 
-             rendertodo();
-             "> DELETE </button>
-              </p>`
-        // const html = `<p> ${element}</p>`;
-        display += element;
-        
-        
-       }
-    //    console.log(todoobject);
-       console.log(display);
-       document.querySelector('.to-do-show').innerHTML = display;
-    }
-
-       function handlekeydown(event){
-            if (event.key === 'Enter'){
-                todoWork();
-            }
-
-        }
-        function todoWork(){
-           
-            let inputElement= document.querySelector('input').value;
-            let inputDateElement= document.querySelector('#date').value;
-            // alert(typeof(inputDateElement));
-            // myArray.push(inputElement);
-            // console.log(myArray);
-
-           
-
-            if(inputElement === '' || inputDateElement === ''  ){
-
-                alert("fill the text and date");
-             } else {
-        // Remove 'add some work' text if it is still present in the array
-        let index = myArray.findIndex(item => item.name === 'add some work');
-        if (index !== -1) {
-            myArray.splice(index, 1); // Remove the item from the array
-        }
-            //else {
-            //     // Remove 'add some work' text if it is still present in the array
-            //     if (myArray.includes({name:'add some work'})) {
-            //         myArray = []; // Clear the default text before adding new tasks
-            //     }
-
-                myArray.push({name:inputElement,duedate:inputDateElement});
-                // myArray.push(inputDateElement);
-                 // Add the new task
-                console.log(myArray);
-            }
-
-            document.querySelector('input').value = '';
-            document.querySelector('#date').value='';
-
-            rendertodo();
-        
-        
-        }
-       
-
-
-        
-        
-
-
-       
-        // const todo=['make dinner','dfdsfdf','dsfsfd','dfsfdg'];
-        // console.log(todo.length);
-
-        // for (let index = 0; index < todo.length; index++) {
-        //     const element = todo[index];
-        //     console.log(element);
-            
-        // }
-    </script>
+    <script src="./script/todo.js"></script>
 </body>
 </html>
