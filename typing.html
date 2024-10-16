@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Typing Speed Test</h1>
+        <p id="text-to-type">This is a sample text for the typing speed test.</p>
+        <textarea id="user-input" placeholder="Start typing above text..."></textarea>
+        <button id="start-button">Start Test</button>
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <p id="wpm"></p>
+            <p id="accuracy"></p>
+        </div>
+    </div>
+
+    <!-- const text to type documnent.get element by id text too type user input document.getelementby id text to type
+     start buttoon annd sshows results there is wpm means typinng  speed and check  accuracy of word typing accuracy display -->
+    <script>
+        const textToType = document.getElementById('text-to-type');
+        const userInput = document.getElementById('user-input');
+        const startButton = document.getElementById('start-button');
+        const results = document.getElementById('results');
+        const wpmDisplay = document.getElementById('wpm');
+        const accuracyDisplay = document.getElementById('accuracy');
+
+        let startTime;
+        let timer;
+        let totalTime = 0;
+
+        // Sample text for typing
+        const originalText = "This is a sample text for the typing speed test.";
+
+        startButton.addEventListener('click', startTest);
+
+        function startTest() {
+            userInput.value = '';
+            userInput.disabled = false;
+            results.classList.add('hidden');
+            userInput.focus();
+
+            // Display the text to type
+            textToType.innerText = originalText;
+
+            // Start the timer
+            startTime = new Date();
+            totalTime = 0; // Reset time
+            timer = setInterval(() => {
+                totalTime = Math.floor((new Date() - startTime) / 1000);
+            }, 1000);
+        }
+
+        userInput.addEventListener('input', trackTyping);
+
+        function trackTyping() {
+            const typedText = userInput.value;
+
+            // Calculate accuracy
+            const correctChars = typedText.split('').filter((char, index) => char === originalText[index]).length;
+            const accuracy = ((correctChars / originalText.length) * 100).toFixed(2);
+
+            // Display results when the user finishes typing
+            if (typedText === originalText) {
+                clearInterval(timer);
+                userInput.disabled = true;
+
+                // Calculate WPM
+                const wpm = Math.floor((typedText.split(' ').length / (totalTime / 60)));
+                wpmDisplay.innerText = `Your typing speed: ${wpm} WPM`;
+                accuracyDisplay.innerText = `Accuracy: ${accuracy}%`;
+                results.classList.remove('hidden');
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
