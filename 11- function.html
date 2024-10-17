@@ -7,6 +7,8 @@
 </head>
 <body>
     <button onclick="updateCart();">Add To Cart</button>
+    <button onclick="updatemessage();">Add</button>
+    <button onclick="removeMesssage();">Remove</button>
     <div></div>
     <script>
         function updateCart(){
@@ -19,11 +21,23 @@
 
        
         }
-    
+    let messages=0;
+
+    function updatemessage(){
+        messages++;
+    }
+    function removeMesssage(){
+        if(messages>0){
+        messages--;
+        }
+    }
+    // document.title='App';
+
+
       setInterval(function() {
-        if (document.title === 'App') {
-          document.title = '(2) New messages';
-        } else {
+        if (document.title === 'App' && messages>0  ) {
+          document.title =messages+'new messages' ;
+        } else  {
           document.title = 'App';
         }
       }, 1000);
