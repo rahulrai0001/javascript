@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD Records</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <h1>CRUD Application</h1>
@@ -15,9 +17,25 @@
             <a href="#">Settings</a>
         </nav>
     </header>
-   
+
     <section class="table-section">
+        <div class="recordsContent">
         <h2>Current Records</h2>
+        <div class="sort-menu">
+            <label for="sortOptions">Sort by:</label>
+            <select id="sortOptions" onchange="sortTable()">
+                <option value="">Select...</option>
+                <option value="id-asc">ID (Ascending)</option>
+                <option value="id-desc">ID (Descending)</option>
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="email-asc">Email (A-Z)</option>
+                <option value="email-desc">Email (Z-A)</option>
+            </select>
+        </div>
+        
+        <input type="text" id="searchBar" placeholder="Search records..." onkeyup="searchfn();"/>
+    </div>
         <table>
             <thead>
                 <tr>
@@ -62,7 +80,7 @@
         </div>
     </div>
 
-    
+
     <script src="./recordcrud.js"></script>
 </body>
 </html>

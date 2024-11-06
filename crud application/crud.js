@@ -63,41 +63,41 @@
 
 
 
-    let records = JSON.parse(localStorage.getItem('records')) || [];
-    let isEditMode = false;
-    let editIndex = null;
+let records = JSON.parse(localStorage.getItem('records')) || [];
+let isEditMode = false;
+let editIndex = null;
 
-    document.getElementById('crudForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
+document.getElementById('crudForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
 
-        if (isEditMode) {
-            // Update the existing record
-            records[editIndex] = { name, email, phone };
-            isEditMode = false;
-            editIndex = null;
-        } else {
-            // Add a new record
-            records.push({ name, email, phone });
-        }
+    if (isEditMode) {
+        // Update the existing record
+        records[editIndex] = { name, email, phone };
+        isEditMode = false;
+        editIndex = null;
+    } else {
+        // Add a new record
+        records.push({ name, email, phone });
+    }
 
-        // Save records to localStorage
-        localStorage.setItem('records', JSON.stringify(records));
+    // Save records to localStorage
+    localStorage.setItem('records', JSON.stringify(records));
 
-        // Reset form and re-render table
-        resetForm();
-        renderTable();
-    });
+    // Reset form and re-render table
+    resetForm();
+    renderTable();
+});
 
-    // Function to render the table with records
-    function renderTable() {
-        const tableBody = document.querySelector('tbody');
-        tableBody.innerHTML = ''; // Clear existing rows
+// Function to render the table with records
+function renderTable() {
+    const tableBody = document.querySelector('tbody');
+    tableBody.innerHTML = ''; // Clear existing rows
 
-        records.forEach((record, index) => {
-            const row = `
+    records.forEach((record, index) => {
+        const row = `
                 <tr>
                     <td>${index + 1}</td>
                     <td>${record.name}</td>
@@ -109,23 +109,23 @@
                     </td>
                 </tr>
             `;
-            tableBody.innerHTML += row;
-        });
-    }
+        tableBody.innerHTML += row;
+    });
+}
 
-    // Function to edit a record
-    function editRecord(index) {
-        const record = records[index];
-        document.getElementById('name').value = record.name;
-        document.getElementById('email').value = record.email;
-        document.getElementById('phone').value = record.phone;
+// Function to edit a record
+function editRecord(index) {
+    const record = records[index];
+    document.getElementById('name').value = record.name;
+    document.getElementById('email').value = record.email;
+    document.getElementById('phone').value = record.phone;
 
-        isEditMode = true;
-        editIndex = index;
-    }
+    isEditMode = true;
+    editIndex = index;
+}
 
-    // Function to delete a record
-   // Delete record
+// Function to delete a record
+// Delete record
 function confirmDelete(index) {
     // Show the custom delete confirmation modal
     const modal = document.getElementById('deleteModal');
@@ -134,36 +134,35 @@ function confirmDelete(index) {
 }
 
 // Function to handle delete action after confirmation
-document.getElementById('confirmDelete').addEventListener('click', function() {
+document.getElementById('confirmDelete').addEventListener('click', function () {
     // If confirmed, delete the record
     records.splice(deleteIndex, 1); // Remove the record from the array
     localStorage.setItem('records', JSON.stringify(records)); // Update localStorage
     renderTable(); // Re-render the table after deletion
-    
+
     // Close the modal
     const modal = document.getElementById('deleteModal');
     modal.style.display = 'none';
 });
 
 // Function to handle cancel delete action
-document.getElementById('cancelDelete').addEventListener('click', function() {
+document.getElementById('cancelDelete').addEventListener('click', function () {
     // Close the modal without deleting
     const modal = document.getElementById('deleteModal');
     modal.style.display = 'none';
 });
-    
-    
 
-    // Function to reset the form
-    function resetForm() {
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('phone').value = '';
-        isEditMode = false;
-        editIndex = null;
-    }
 
-    // Initialize table on page load
-    document.addEventListener('DOMContentLoaded', renderTable);
 
-  
+// Function to reset the form
+function resetForm() {
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
+    isEditMode = false;
+    editIndex = null;
+}
+
+// Initialize table on page load
+document.addEventListener('DOMContentLoaded', renderTable);
+
